@@ -1,0 +1,10 @@
+node_modules
+dist
+dev-dist
+coverage
+*.local
+.DS_Store
+# dados pessoais: nunca versionar as planilhas reais nem backups
+*.xlsx
+*.xls
+pentatlo-backup-*.json

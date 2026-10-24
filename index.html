@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Pentatlo Militar</title>
+    <meta name="description" content="Acompanhamento offline da preparação para o Pentatlo Militar: treino, dieta e aderência." />
+    <meta name="theme-color" content="#0b1220" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#f4f6f1" media="(prefers-color-scheme: light)" />
+    <meta name="color-scheme" content="light dark" />
+    <!-- iPhone: app em tela cheia quando adicionado à Tela de Início -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Pentatlo" />
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png" />
+    <script>
+      // aplica o tema antes do primeiro desenho (evita piscar)
+      try {
+        var s = JSON.parse(localStorage.getItem('pentatlo-theme') || '"system"');
+        var dark = s === 'dark' || (s === 'system' && matchMedia('(prefers-color-scheme: dark)').matches);
+        if (dark) document.documentElement.classList.add('dark');
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <noscript>Ative o JavaScript para usar o app.</noscript>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

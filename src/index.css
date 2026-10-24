@@ -1,0 +1,150 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Paleta própria: verde-oliva militar + azul-noite. Contraste AA nos dois temas. */
+:root {
+  --bg: 244 246 241;
+  --surface: 255 255 255;
+  --surface2: 233 237 228;
+  --line: 208 214 200;
+  --ink: 20 26 22;
+  --muted: 84 94 86;
+  --accent: 74 103 41;
+  --accent-ink: 255 255 255;
+  --ok: 22 128 61;
+  --warn: 161 98 7;
+  --bad: 185 28 28;
+  --m-corrida: 194 65 12;
+  --m-natacao: 3 105 161;
+  --m-forca: 109 40 217;
+  --m-granada: 77 124 15;
+  --m-tiro: 190 18 60;
+  --m-ppm: 180 83 9;
+  --m-pnu: 15 118 110;
+  --m-mobilidade: 4 120 87;
+  --m-competicao: 161 98 7;
+  --m-outro: 82 82 91;
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  color-scheme: light;
+}
+
+.dark {
+  --bg: 11 18 32;
+  --surface: 19 28 46;
+  --surface2: 28 40 62;
+  --line: 45 60 86;
+  --ink: 236 241 233;
+  --muted: 160 172 160;
+  --accent: 163 196 98;
+  --accent-ink: 14 22 10;
+  --ok: 74 222 128;
+  --warn: 251 191 36;
+  --bad: 248 113 113;
+  --m-corrida: 251 146 60;
+  --m-natacao: 56 189 248;
+  --m-forca: 167 139 250;
+  --m-granada: 163 230 53;
+  --m-tiro: 251 113 133;
+  --m-ppm: 251 191 36;
+  --m-pnu: 45 212 191;
+  --m-mobilidade: 52 211 153;
+  --m-competicao: 250 204 21;
+  --m-outro: 161 161 170;
+  color-scheme: dark;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  @apply bg-bg text-ink font-sans antialiased;
+  -webkit-tap-highlight-color: transparent;
+  overscroll-behavior-y: none;
+  -webkit-text-size-adjust: 100%;
+}
+
+.pt-safe {
+  padding-top: max(var(--safe-top), 0.75rem);
+}
+.pb-safe {
+  padding-bottom: var(--safe-bottom);
+}
+.pb-nav {
+  padding-bottom: calc(5.25rem + var(--safe-bottom));
+}
+
+@layer components {
+  .card {
+    @apply rounded-xl2 border border-line bg-surface p-4 shadow-sm;
+  }
+  .btn {
+    @apply inline-flex min-h-[44px] select-none items-center justify-center gap-2 rounded-xl px-4 text-[15px] font-semibold transition active:scale-[0.98] disabled:opacity-40;
+  }
+  .btn-primary {
+    @apply btn bg-accent text-accentInk;
+  }
+  .btn-ghost {
+    @apply btn border border-line bg-surface text-ink;
+  }
+  .btn-danger {
+    @apply btn bg-bad text-white;
+  }
+  .input {
+    @apply min-h-[44px] w-full rounded-xl border border-line bg-surface px-3 text-[16px] text-ink placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-accent;
+  }
+  .label {
+    @apply mb-1 block text-[13px] font-medium text-muted;
+  }
+  .chip {
+    @apply inline-flex min-h-[32px] items-center gap-1 rounded-full border border-line bg-surface px-3 text-[13px] font-medium;
+  }
+  .section-title {
+    @apply mb-2 mt-5 px-1 text-[13px] font-semibold uppercase tracking-wide text-muted;
+  }
+}
+
+/* Foco visível para teclado/VoiceOver */
+:focus-visible {
+  outline: 3px solid rgb(var(--accent));
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+.reduce-motion *,
+.reduce-motion *::before,
+.reduce-motion *::after {
+  animation-duration: 0.01ms !important;
+  transition-duration: 0.01ms !important;
+}
+
+.sheet-enter {
+  animation: sheet-up 0.22s ease-out;
+}
+@keyframes sheet-up {
+  from {
+    transform: translateY(24px);
+    opacity: 0;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+.whitespace-pre-line-safe {
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+}
